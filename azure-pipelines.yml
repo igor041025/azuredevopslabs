@@ -10,7 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world! How are you today? %date% - %time%
+# - script: echo Hello, world! How are you today? %date% - %time%
+- script: echo Hello, world! How are you today? ; date
   displayName: 'Run a one-line script'
 
 - script: |
