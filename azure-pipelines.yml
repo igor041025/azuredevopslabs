@@ -9,12 +9,23 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+
+variables:
+  AZURE_CLIENT_ID: $(AZURE_CLIENT_ID)
+  AZURE_CLIENT_SECRET: $(AZURE_CLIENT_SECRET)
+  AZURE_TENANT_ID: $(AZURE_TENANT_ID)
+  AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+
 steps:
 # - script: echo Hello, world! How are you today? %date% - %time%
 - script:
-    echo Hello, world! How are you today?;
-    date;
-    az login;
+    echo Hello, world! How are you today?
+    date
+    az login --service-principal --username "$AZURE_CLIENT_ID" --password "$AZURE_CLIENT_SECRET" --tenant "$AZURE_TENANT_ID"
+
+    echo "Setting subscription..."
+    az account set --subscription "$AZURE_SUBSCRIPTION_ID"
+
     rolelist=`az role assignment list --all --assignee "fe77cbae-ef30-4f13-88f2-241f33e5e62f" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'`;
     echo $rolelist;
   displayName: 'Run a one-line script'
