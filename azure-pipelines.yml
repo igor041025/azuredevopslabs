@@ -23,6 +23,7 @@ steps:
     echo Hello, world! How are you today?
     date
     echo $(AZURE_CLIENT_ID);
+    echo $(AZURE_TENANT_ID);
     az login --service-principal --username "$AZURE_CLIENT_ID" --password "$AZURE_CLIENT_SECRET" --tenant "$AZURE_TENANT_ID";
     echo "Setting subscription..."
     az account set --subscription "$AZURE_SUBSCRIPTION_ID";
