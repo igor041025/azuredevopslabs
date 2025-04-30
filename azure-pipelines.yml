@@ -21,7 +21,7 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 't-service-connection1'
-#    scriptType: 'bash'
+    scriptType: 'bash'
     scriptLocation: 'inlineScript'
 # - script: echo Hello, world! How are you today? %date% - %time%
     inlineScript: |
