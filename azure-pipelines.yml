@@ -33,18 +33,18 @@ steps:
       # az account show
       echo "Setting subscription..."
       # az account set --subscription "$(AZURE_SUBSCRIPTION_ID)"
-      ## roleDefinitionNames=`az role assignment list --all --assignee "fe77cbae-ef30-4f13-88f2-241f33e5e62f" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'`
-      az role assignment list --all --assignee "fe77cbae-ef30-4f13-88f2-241f33e5e62f" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'
+      roleDefinitionNames=`az role assignment list --all --assignee "fe77cbae-ef30-4f13-88f2-241f33e5e62f" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'`
+      #      az role assignment list --all --assignee "fe77cbae-ef30-4f13-88f2-241f33e5e62f" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'
 
       # roleDefinitionNames=`az role assignment list --all --assignee-object-id --assignee-principal-type --assignee "b00f2f6c-5e35-482d-8359-c627a112d970" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'`
       #      roleDefinitionNames=`az role assignment list --all --assignee "b00f2f6c-5e35-482d-8359-c627a112d970" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'`
       # roleDefinitionNames=`az role assignment list --debug --all --assignee "2e69a19b-0c53-43a5-8721-7be694339559" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'`
       # echo "roleDefinitionNames:", $roleDefinitionNames
       # "Graph Owner"
-      for roleDefinitionName in $roleDefinitionNames
-      do
+      for roleDefinitionName in $roleDefinitionNames; do
+      #      do
         echo "in loop" $roleDefinitionNames
-        if [ "$roleDefinitionName" = "Graph Owner" ]
+        if [ roleDefinitionName = "Graph Owner" ]
         then
           echo "Prohibited Role" $roleDefinitionNames
         else
