@@ -44,7 +44,8 @@ steps:
       for roleDefinitionName in $roleDefinitionNames; do
       #      do
         echo "in loop" $roleDefinitionNames $roleDefinitionName
-        if [ $roleDefinitionName = "Graph Owner" ] then
+        if [ $roleDefinitionName = "Graph Owner" ]
+        then
           echo "Prohibited Role" $roleDefinitionNames
         else
           echo "else case"
