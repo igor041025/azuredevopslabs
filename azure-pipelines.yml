@@ -43,8 +43,8 @@ steps:
       # "Graph Owner"
       for roleDefinitionName in $roleDefinitionNames; do
       #      do
-        echo "in loop" $roleDefinitionNames roleDefinitionName
-        if [ roleDefinitionName = "Graph Owner" ]
+        echo "in loop" $roleDefinitionNames $roleDefinitionName
+        if [ $roleDefinitionName = "Graph Owner" ]
         then
           echo "Prohibited Role" $roleDefinitionNames
         else
