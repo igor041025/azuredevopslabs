@@ -41,9 +41,12 @@ steps:
       # "Graph Owner"
       for roleDefinitionName in $roleDefinitionNames
       do
+        echo "in loop"
         if [ "$roleDefinitionName" = "Graph Owner" ]
         then
           echo "Prohibited Role" $roleDefinitionNames
+        else
+          echo "else case"
         fi
       done
 #    az login --service-principal --username "$AZURE_CLIENT_ID" --password "$AZURE_CLIENT_SECRET" --tenant "$AZURE_TENANT_ID";
