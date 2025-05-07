@@ -48,7 +48,8 @@ steps:
       ##    echo "in loop" $roleDefinitionNames $roleDefinitionName
       ##    if [ $roleDefinitionName = "Graph Owner" ]
       ##  if [ $roleDefinitionNames = '¥"Graph Owner¥"' ]
-      if grep -q "Graph Owner" $roleDefinitionNames
+      ##  if grep -q "Graph Owner" $roleDefinitionNames
+      if echo "$roleDefinitionNames" | grep -q "Owner";
         then
           echo "Prohibited Role" $roleDefinitionNames
         else
