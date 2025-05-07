@@ -43,19 +43,19 @@ steps:
       # roleDefinitionNames=`az role assignment list --debug --all --assignee "2e69a19b-0c53-43a5-8721-7be694339559" --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'| jq '.[].roleDefinitionName'`
       # echo "roleDefinitionNames:", $roleDefinitionNames
       # "Graph Owner"
-      ##  for roleDefinitionName in $roleDefinitionNames; do
-      #      do
-      ##    echo "in loop" $roleDefinitionNames $roleDefinitionName
+      for roleDefinitionName in $roleDefinitionNames
+      do
+        echo "in loop" $roleDefinitionNames $roleDefinitionName
       ##    if [ $roleDefinitionName = "Graph Owner" ]
       ##  if [ $roleDefinitionNames = '¥"Graph Owner¥"' ]
       ##  if grep -q "Graph Owner" $roleDefinitionNames
-      if echo "$roleDefinitionNames" | grep -q "Owner";
-        then
-          echo "Prohibited Role" $roleDefinitionNames
-        else
-          echo "else case"
+        if echo "$roleDefinitionName" | grep -q "Owner"
+          then
+            echo "Prohibited Role" $roleDefinitionName
+          else
+            echo "else case"
         fi
-      ##  done
+      done
 #    az login --service-principal --username "$AZURE_CLIENT_ID" --password "$AZURE_CLIENT_SECRET" --tenant "$AZURE_TENANT_ID";
 #  displayName: 'Run a one-line script'
 #variables:
