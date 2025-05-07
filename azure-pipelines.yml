@@ -52,7 +52,10 @@ steps:
         if echo "$roleDefinitionName" | grep -q "Owner"
           then
             echo "Prohibited Role" $roleDefinitionName
-          else
+        else if echo "$roleDefinitionName" | grep -q "Graph"
+          then
+            echo "Prohibited Role" $roleDefinitionName
+        else
             echo "else case"
         fi
       done
